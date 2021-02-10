@@ -64,6 +64,11 @@ export default {
           icon: 'logout',
           to: { name: 'logout' },
         },
+        {
+          title: 'Questions',
+          icon: 'cogs',
+          to: { name: 'admin-question' },
+        },
       ],
     }
   },
