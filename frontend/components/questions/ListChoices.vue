@@ -1,6 +1,6 @@
 <template>
   <b-table striped :data="value">
-    <template #foot()="props">
+    <template #foot(name)="props">
       <b-table-column label="#" sortable>
         {{ props.row.id }}
       </b-table-column>

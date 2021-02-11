@@ -1,37 +1,53 @@
 <template>
   <b-table striped :data="value">
-    <template slot-scope="props">
-      <b-table-column field="id" label="ID" width="40" sortable numeric>
-        {{ props.row.id }}
-      </b-table-column>
+    <b-table-column
+      v-slot="props"
+      field="id"
+      label="ID"
+      width="40"
+      sortable
+      numeric
+    >
+      {{ props.row.id }}
+    </b-table-column>
+    <b-table-column v-slot="props" field="text" label="Question text" sortable>
+      {{ props.row.text }}
+    </b-table-column>
 
-      <b-table-column field="text" label="Question text" sortable>
-        {{ props.row.text }}
-      </b-table-column>
+    <b-table-column
+      v-slot="props"
+      field="start_date"
+      label="Start"
+      sortable
+      centered
+    >
+      {{ new Date(props.row.start_date).toLocaleString() }}
+    </b-table-column>
 
-      <b-table-column field="start_date" label="Start" sortable centered>
-        {{ new Date(props.row.start_date).toLocaleString() }}
-      </b-table-column>
+    <b-table-column
+      v-slot="props"
+      field="end_date"
+      label="End"
+      sortable
+      centered
+    >
+      {{ new Date(props.row.end_date).toLocaleString() }}
+    </b-table-column>
 
-      <b-table-column field="end_date" label="End" sortable centered>
-        {{ new Date(props.row.end_date).toLocaleString() }}
-      </b-table-column>
-
-      <b-table-column field="actions" label="Actions">
-        <b-button
-          type="is-warning"
-          icon-left="pencil"
-          @click="loadQuestion(props.row)"
-        >
-        </b-button>
-        <b-button
-          type="is-danger"
-          icon-left="trash-can-outline"
-          @click="confirmRemove(props.row)"
-        >
-        </b-button>
-      </b-table-column>
-    </template>
+    <b-table-column v-slot="props" field="actions" label="Actions">
+      <b-button
+        type="is-warning"
+        icon-left="pencil"
+        @click="loadQuestion(props.row)"
+      >
+      </b-button>
+      <b-button
+        type="is-danger"
+        icon-left="trash-can-outline"
+        @click="confirmRemove(props.row)"
+      >
+      </b-button>
+    </b-table-column>
   </b-table>
 </template>
 
