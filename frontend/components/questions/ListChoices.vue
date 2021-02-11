@@ -1,28 +1,26 @@
 <template>
   <b-table striped :data="value">
-    <template #foot(name)="props">
-      <b-table-column label="#" sortable>
-        {{ props.row.id }}
-      </b-table-column>
-      <b-table-column label="Choice text" sortable>
-        {{ props.row.text }}
-      </b-table-column>
+    <b-table-column v-slot="props" label="#" sortable>
+      {{ props.row.id }}
+    </b-table-column>
+    <b-table-column v-slot="props" label="Choice text" sortable>
+      {{ props.row.text }}
+    </b-table-column>
 
-      <b-table-column field="actions" label="Actions">
-        <b-button
-          type="is-warning"
-          icon-left="pencil"
-          @click="loadChoice(props.row)"
-        >
-        </b-button>
-        <b-button
-          type="is-danger"
-          icon-left="trash-can-outline"
-          @click="confirmRemove(props.row)"
-        >
-        </b-button>
-      </b-table-column>
-    </template>
+    <b-table-column v-slot="props" field="actions" label="Actions">
+      <b-button
+        type="is-warning"
+        icon-left="pencil"
+        @click="loadChoice(props.row)"
+      >
+      </b-button>
+      <b-button
+        type="is-danger"
+        icon-left="trash-can-outline"
+        @click="confirmRemove(props.row)"
+      >
+      </b-button>
+    </b-table-column>
   </b-table>
 </template>
 
